@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE digester-rules PUBLIC
+   "-//Jakarta Apache //DTD digester-rules XML V1.0//EN"
+   "digester-rules.dtd"> 
+<digester-rules>  
+    <object-create-rule pattern="library" classname="cm.user.bean.Library" />  
+    	<set-properties-rule pattern="library">  
+        	<alias attr-name="name" prop-name="name" />  
+    	</set-properties-rule >  
+    <pattern value="library/EEbook">  
+        <object-create-rule classname="cm.user.bean.EEBook" />  
+	    <set-properties-rule />  
+		<pattern value="chapter">  
+            <object-create-rule classname="cm.user.bean.BookChapter" />  
+            <bean-property-setter-rule pattern="no" propertyname="no" />
+            <bean-property-setter-rule pattern="caption" propertyname="caption" />
+            <set-next-rule methodname="addBookChapter" />  
+        </pattern>	 
+        <set-next-rule methodname="addEEBook" />  
+    </pattern>
+    <pattern value="library/CEbook">  
+        <object-create-rule classname="cm.user.bean.CEBook" />  
+	    <set-properties-rule />  
+		<pattern value="chapter">  
+            <object-create-rule classname="cm.user.bean.BookChapter" />  
+            <bean-property-setter-rule pattern="no" propertyname="no" />
+            <bean-property-setter-rule pattern="caption" propertyname="caption" />
+            <set-next-rule methodname="addBookChapter" />  
+        </pattern>	 
+        <set-next-rule methodname="addCEBook" />  
+    </pattern>  
+</digester-rules> 
